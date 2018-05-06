@@ -1,0 +1,157 @@
+$primary-blue: #0c2b54;
+$gradient: linear-gradient(to top, #09203f 0%, #105992 100%);
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+	min-height: 100%;
+	background-image: $gradient;
+	color: #fff;
+	margin: 0;
+	background-repeat: no-repeat;
+    background-color: #0a213f;
+}
+
+#app {
+	max-width: 70em;
+    margin: 0 auto;
+	width: 100%;
+	position: relative;
+	padding: 0 1em;
+}
+
+.logo {
+	font-weight: 300;
+	display: inline-block;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 400;
+}
+
+.movie-search {
+	&__form {
+		display: flex;
+		align-items: center;
+		position: relative;
+		&__label {
+			font-size: 1.5em;
+			position: absolute;
+			left: 1em;
+		}
+		&__input {
+			flex-grow: 1;
+			font-size: 1.5em;
+			padding: .75em 2em .75em 3em;
+			background: rgba(0,0,0,.15);
+			border-radius: 5px;
+			border: 0;
+			color: #fff;
+			font-weight: 300;
+			transition: all .3s ease-in;
+			&:active,
+			&:focus {
+				outline: 0;
+				background: $primary-blue;
+			}
+			&::-webkit-input-placeholder {
+				color: rgba(255, 255, 255, 0.37);
+				font-weight: 300;
+			}
+		}
+	}
+	&__grid {
+		position: absolute;
+		width: 100%;
+		background-color: $primary-blue;
+		font-size: 1.5em;
+		padding: .5em 1em;
+		z-index: 1;
+		border-radius: 5px;
+		margin-top: .1em;
+	}
+	&__item {
+		cursor: pointer;
+	}
+}
+
+.seen-movie {
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 200px);
+		align-items: stretch;
+		grid-gap: 20px;
+	}
+	&__delete {
+		position: absolute;
+		right: 15px;
+		top: 10px;
+		color: white;
+		font-size: 20px;
+		opacity: 0;
+		transform: translateY(-40px);
+		opacity: 0;
+		transition: all .15s ease-in;
+		> i {
+			text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+		}
+	}
+	&__item {
+		max-width: 200px;
+		position: relative;
+		overflow: hidden;
+		padding: 0 5px;
+		&:hover .seen-movie__delete {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	&__image {
+		width: 100%;
+	}
+	&__title {
+		font-weight: bold;
+	}
+	&__info {
+		color: #8db6d8;
+	}
+}
+
+.time-counter {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 3em 1em;
+    font-weight: 100;
+}
+
+// Fade list animation
+.fade {
+    backface-visibility: hidden;
+    z-index: 1;
+    &-move {
+        transition: all 600ms ease-in-out 50ms;
+    }
+
+    &-enter-active {
+        transition: all 300ms ease-out;
+    }
+
+    &-leave-active {
+        transition: all 300ms ease-in;
+        position: absolute;
+        z-index: 0;
+    }
+
+    &-enter,
+    &-leave-to {
+        opacity: 0;
+    }
+}
