@@ -1,5 +1,7 @@
 $primary-blue: #0c2b54;
+$background-color: #0a213f;
 $gradient: linear-gradient(to top, #09203f 0%, #105992 100%);
+$white: #FFFFFF;
 
 * {
 	box-sizing: border-box;
@@ -14,10 +16,10 @@ body {
     font-size: 14px;
 	min-height: 100%;
 	background-image: $gradient;
-	color: #fff;
+	color: $white;
 	margin: 0;
 	background-repeat: no-repeat;
-    background-color: #0a213f;
+    background-color: $background-color;
 }
 
 #app {
@@ -54,7 +56,7 @@ h1, h2, h3, h4, h5 {
 			background: rgba(0,0,0,.15);
 			border-radius: 5px;
 			border: 0;
-			color: #fff;
+			color: $white;
 			font-weight: 300;
 			transition: all .3s ease-in;
 			&:active,
@@ -94,7 +96,7 @@ h1, h2, h3, h4, h5 {
 		position: absolute;
 		right: 15px;
 		top: 10px;
-		color: white;
+		color: $white;
 		font-size: 20px;
 		opacity: 0;
 		transform: translateY(-40px);
