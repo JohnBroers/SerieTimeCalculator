@@ -2,10 +2,9 @@
   <div>
     <TimeCounter />
     <h2>Series I have seen:</h2>
-    <transition-group name="fade" class="seen-movie__grid" mode="out-in" tag="div">
+    <transition-group name="fade" class="seen-movie__grid" mode="out-in" tag="div" v-if="seenMovies.length > 0">
       <div
         v-for="movie in seenMovies"
-        v-if="seenMovies.length > 0"
         :key="movie.id"
         class="seen-movie__item"
       >
@@ -33,7 +32,7 @@ import TimeCounter from './TimeCounter'
 
 export default {
   components: {
-    TimeCounter,
+    TimeCounter
   },
   computed: {
     ...mapState({

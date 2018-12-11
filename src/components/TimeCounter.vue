@@ -8,33 +8,32 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
       totalLength: state => state.totalLength
     }),
-    timeCounter() {
-      let total = this.totalLength;
+    timeCounter () {
+      let total = this.totalLength
 
-      const days = Math.floor(total / (60 * 24));
-      total -= days * (60 * 24);
+      const days = Math.floor(total / (60 * 24))
+      total -= days * (60 * 24)
 
-      const hours = Math.floor(total / 60);
-      total -= hours * 60;
+      const hours = Math.floor(total / 60)
+      total -= hours * 60
 
-      const minutes = total;
-      
-      return { days, hours, minutes };
+      const minutes = total
+
+      return { days, hours, minutes }
     }
   },
   methods: {
-    checkSingular(number) {
+    checkSingular (number) {
       if (number !== 1) {
-        return "s";
+        return 's'
       }
     }
   }
-};
+}
 </script>
-

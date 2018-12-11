@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './assets/scss/main.scss'
-import { store } from './store/store'
+import { store } from './store'
 
 store.subscribe((mutation, state) => {
-	localStorage.setItem('store', JSON.stringify(state));
-});
+  localStorage.setItem('serieCounterData', JSON.stringify(state))
+})
+
+Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
   store,
   render: h => h(App)
-})
+}).$mount('#app')

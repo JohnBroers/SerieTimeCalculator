@@ -7,19 +7,23 @@
 </template>
 
 <script>
-import SearchMovie from "./components/SearchMovies"
-import TheNavigation from "./components/Navigation"
-import SeenMovies from "./components/SeenMovies"
+import SearchMovie from './components/SearchMovies'
+import TheNavigation from './components/Navigation'
+import SeenMovies from './components/SeenMovies'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     SearchMovie,
     TheNavigation,
     SeenMovies
   },
-  beforeCreate() {
-		this.$store.commit('initialiseStore');
-	}
-};
+  beforeCreate () {
+    this.$store.commit('initialiseStore')
+  }
+}
 </script>
+
+<style lang="scss">
+@import './assets/scss/main.scss';
+</style>

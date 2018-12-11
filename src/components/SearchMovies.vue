@@ -40,7 +40,7 @@ import axios from 'axios'
 import { mapActions } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       searchResults: [],
       resultsActive: false
@@ -48,18 +48,18 @@ export default {
   },
   computed: {
     query: {
-      get() {
+      get () {
         return this.$store.state.query
       },
-      set(value) {
+      set (value) {
         this.$store.commit('updateQuery', value)
       }
     }
   },
   methods: {
     ...mapActions(['addSeenMovie']),
-    fetchSearchResults() {
-      this.resultsActive = true;
+    fetchSearchResults () {
+      this.resultsActive = true
       axios.get(`https://api.themoviedb.org/3/search/tv?api_key=56506e6256a280dcd69573fa48f1f3fd&query=${this.query}`)
         .then((response) => {
           this.searchResults = response.data.results.splice(0, 3)
@@ -68,11 +68,11 @@ export default {
           console.error(e)
         })
     },
-    hideResults() {
+    hideResults () {
       setTimeout(() => {
         this.resultsActive = false
       }, 250)
     }
   }
-};
+}
 </script>
