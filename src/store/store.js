@@ -28,6 +28,18 @@ export const store = new Vuex.Store({
         },
         clearQuery (state) {
             state.query = '';
+        },
+        initialiseStore(state) {
+			if(localStorage.getItem('store')) {
+                this.replaceState(
+					Object.assign(state, JSON.parse(localStorage.getItem('store')))
+				);
+			}
+        },
+        clearStore(state) {
+            state.query = '',
+            state.seenMovies = [],
+            state.totalLength = 0
         }
     },
     actions: {
@@ -54,6 +66,9 @@ export const store = new Vuex.Store({
             const movieIndex = this.state.seenMovies.indexOf(movie);
             commit('deletemovie', movieIndex);
             commit('reduceTotalLength', serieLength);
+        },
+        clearStorage({commit}) {
+            commit('clearStore');
         }
     },
 })

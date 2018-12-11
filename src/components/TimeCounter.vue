@@ -1,9 +1,9 @@
 <template>
   <div class="time-counter">
     You have spend a total of
-    <strong>{{ timeCounter.days }} day{{checkSingular(timeCounter.days)}}</strong>,
-    <strong>{{timeCounter.hours}} hour{{checkSingular(timeCounter.hours)}}</strong> and
-    <strong>{{ timeCounter.minutes}} minute{{checkSingular(timeCounter.minutes)}}</strong> watching series..
+    <strong>{{ timeCounter.days }} day{{ checkSingular(timeCounter.days) }}</strong>,
+    <strong>{{timeCounter.hours}} hour{{ checkSingular(timeCounter.hours) }}</strong> and
+    <strong>{{ timeCounter.minutes}} minute{{ checkSingular(timeCounter.minutes) }}</strong> watching series..
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
       total -= hours * 60;
 
       const minutes = total;
+      
       return { days, hours, minutes };
     }
   },

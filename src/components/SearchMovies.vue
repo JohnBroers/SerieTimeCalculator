@@ -2,14 +2,14 @@
   <div class="movie-search">
     <form class="movie-search__form">
       <label for="searchquery" class="movie-search__form__label">
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search" />
       </label>
       <input
-        type="text"
+        id="searchquery"
         v-model="query"
+        type="text"
         class="movie-search__form__input"
         name="searchquery"
-        id="searchquery"
         placeholder="Search for your serie..."
         autocomplete="off"
         @keyup="fetchSearchResults"
@@ -17,14 +17,16 @@
       >
     </form>
 
-    <div class="movie-search__grid" v-show="resultsActive && query != ''">
+    <div v-show="resultsActive && query != ''" class="movie-search__grid">
       <div v-if="searchResults.length > 0">
         <p
-          class="movie-search__item"
           v-for="movie in searchResults"
           :key="movie.id"
+          class="movie-search__item"
           @click="addSeenMovie(movie); resultsActive = false"
-        >{{ movie.name }}</p>
+        >
+          {{ movie.name }}
+        </p>
       </div>
       <div v-if="searchResults.length === 0 && this.query != ''">
         <p>No results found for '{{ this.query }}'</p>
@@ -34,47 +36,42 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapActions } from "vuex";
+import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
       searchResults: [],
       resultsActive: false
-    };
+    }
   },
   computed: {
     query: {
       get() {
-        return this.$store.state.query;
+        return this.$store.state.query
       },
       set(value) {
-        this.$store.commit("updateQuery", value);
+        this.$store.commit('updateQuery', value)
       }
     }
   },
   methods: {
-    ...mapActions(["addSeenMovie"]),
+    ...mapActions(['addSeenMovie']),
     fetchSearchResults() {
       this.resultsActive = true;
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/tv?api_key=56506e6256a280dcd69573fa48f1f3fd&query=${
-            this.query
-          }`
-        )
-        .then(response => {
-          this.searchResults = response.data.results.splice(0, 3);
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=56506e6256a280dcd69573fa48f1f3fd&query=${this.query}`)
+        .then((response) => {
+          this.searchResults = response.data.results.splice(0, 3)
         })
-        .catch(e => {
-          console.error(e);
-        });
+        .catch((e) => {
+          console.error(e)
+        })
     },
     hideResults() {
       setTimeout(() => {
-        this.resultsActive = false;
-      }, 250);
+        this.resultsActive = false
+      }, 250)
     }
   }
 };

@@ -1,22 +1,24 @@
 <template>
   <div>
-    <app-time-counter></app-time-counter>
+    <TimeCounter />
     <h2>Series I have seen:</h2>
     <transition-group name="fade" class="seen-movie__grid" mode="out-in" tag="div">
       <div
-        v-if="seenMovies.length > 0"
         v-for="movie in seenMovies"
+        v-if="seenMovies.length > 0"
         :key="movie.id"
         class="seen-movie__item"
       >
         <a href="/" class="seen-movie__delete" @click.prevent="deleteMovie(movie)">
-          <i class="fas fa-times"></i>
+          <i class="fas fa-times"/>
         </a>
         <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" class="seen-movie__image">
-        <p class="seen-movie__title">{{ movie.name }}</p>
-        <p
-          class="seen-movie__info"
-        >{{ movie.number_of_episodes }} episodes in {{ movie.number_of_seasons }} seasons</p>
+        <p class="seen-movie__title">
+          {{ movie.name }}
+        </p>
+        <p class="seen-movie__info">
+          {{ movie.number_of_episodes }} episodes in {{ movie.number_of_seasons }} seasons
+        </p>
       </div>
     </transition-group>
     <div v-if="seenMovies.length === 0">
@@ -26,13 +28,12 @@
 </template>
 
 <script>
-import TimeCounter from "./TimeCounter";
-
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
+import TimeCounter from './TimeCounter'
 
 export default {
   components: {
-    appTimeCounter: TimeCounter
+    TimeCounter,
   },
   computed: {
     ...mapState({
@@ -40,8 +41,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["deleteMovie"])
+    ...mapActions(['deleteMovie'])
   }
-};
+}
 </script>
-
